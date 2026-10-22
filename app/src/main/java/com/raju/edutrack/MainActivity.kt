@@ -20,6 +20,7 @@ class MainActivity : ComponentActivity() {
         AppSettings.load(this)
         BatchManager.load(this)
         PaymentHistoryManager.load(this)
+        AttendanceManager.load(this)
 
         lifecycleScope.launch {
             when (val result = UpdateManager.checkForUpdate(this@MainActivity)) {

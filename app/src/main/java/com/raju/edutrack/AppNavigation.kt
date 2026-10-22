@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.raju.edutrack.screens.AttendanceScreen
 import com.raju.edutrack.screens.BatchScreen
 import com.raju.edutrack.screens.HomeScreen
 import com.raju.edutrack.screens.OverviewScreen
@@ -91,6 +92,9 @@ fun AppNavigation() {
                                 },
                                 onOpenBatches = {
                                     openPage(items.indexOf(BottomNavItem.Batches))
+                                },
+                                onOpenAttendance = {
+                                    navController.navigate("attendance")
                                 }
                             )
                         BottomNavItem.Students ->
@@ -107,6 +111,9 @@ fun AppNavigation() {
                                 },
                                 onOpenBatches = {
                                     openPage(items.indexOf(BottomNavItem.Batches))
+                                },
+                                onOpenAttendance = {
+                                    navController.navigate("attendance")
                                 }
                             )
                     }
@@ -119,6 +126,13 @@ fun AppNavigation() {
                     backStackEntry.arguments
                         ?.getString("title") ?: ""
                 OverviewScreen(title)
+            }
+            composable("attendance") {
+                AttendanceScreen(
+                    onBack = {
+                        navController.popBackStack()
+                    }
+                )
             }
         }
     }
